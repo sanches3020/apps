@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="utils/css/colors-theme.css">
+    <link rel="stylesheet" href="utils/css/colors.css">
+    <link rel="stylesheet" href="utils/css/shorts.css">
+    <link rel="stylesheet" href="utils/css/fonts.css">
+
+    <script src="controller.js"></script>
+    <script src="dialogs/auth.js"></script>
+</head>
+
+<body class="back-black text-white" ng-app="app" ng-controller="main">
+
+<header class="row asc gap32 ph32 h64 fixed top back-black p8 fill-width text4">
+    <div class="row aec gap16">
+        <span class="text-white bold uppercase">RARIBLE</span>
+        <span class="text-white-60 cursor">Explore</span>
+        <span class="text-gray cursor">Mint</span>
+        <span class="text-yellow10 cursor">Gacha</span>
+    </div>
+
+    <div class="flex row acc ">
+        <div class="row acc relative w500">
+            <img class="img16 absolute left ml8" src="icon/search1.svg">
+            <input type="text"
+                   class="flex back-black border-gray r4 p8 text-white pl32"
+                   placeholder="Search collections and items">
+        </div>
+    </div>
+
+    <div class="row aec">
+        <button class="back-yellow text-black ph16 pv8 r16" ng-click="showLogin()">
+            Login
+        </button>
+    </div>
+</header>
+
+<main class="col ph32 pv10 gap32 back-black" style="flex: 1; padding-top: 64px;">
+    <div class="row asc gap16 text2">
+        <span class="text-white">Live & Upcoming</span>
+        <span class="text-gray cursor">Past</span>
+    </div>
+
+
+    <div class="row aсc wrap gap24 mt16">
+
+        <div class="col r8 cursor border-gray p8">
+            <img src="img/nft.jpg" class="img160 r8">
+
+            <div class="col p8 gap4">
+                <div class="text-yellow bold">● Minting now</div>
+                <div class="row asc gap8">
+                    <div class="text-white bold uppercase">RARE AGENTS</div>
+                    <img src="icon/verified.svg" class="img16">
+                </div>
+
+                <div class="row asc gap8">
+                    <div class="text-white bold text2">$4.78</div>
+                    <img src="icon/info.svg" class="img16">
+                </div>
+
+                <div class="text-gray">77 / 150 minted</div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<footer class="row asc wrap gap16 p16 border-gray text-gray r8 fixed bottom back-black"
+        style="margin: 0 auto; justify-content: space-between; max-width: 1400px; width: 100%;">
+    <div class="row gap16 asc">
+        <span>© Gahinga Inc.</span>
+        <span class="cursor">Terms</span>
+        <span class="cursor">Privacy</span>
+        <span class="cursor">FAQ</span>
+        <span class="cursor">API</span>
+    </div>
+
+    <div class="row gap16 aec">
+        <button class="text-white cursor ph8 pv4 r4" style="background: transparent; border: none;">
+            USD
+        </button>
+        <button class="text-white cursor ph8 pv4 r4" style="background: transparent; border: none;">
+            Crypto
+        </button>
+        <img src="icon/eth.svg" class="img16">
+        <span class="text-white">$1,914</span>
+        <img src="icon/solana.svg" class="img16">
+        <span class="text-white">$76.84</span>
+        <img src="icon/discord.svg" class="img16">
+        <span class="cursor">Community</span>
+    </div>
+</footer>
+</body>
+</html>

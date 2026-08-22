@@ -1,0 +1,35 @@
+@font-face {
+    font-family: 'Geist Mono';
+    src: url('../../fonts/GeistMono-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Geist Mono';
+    src: url('../../fonts/GeistMono-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Tomorrow';
+    src: url('../../fonts/Tomorrow-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Tomorrow';
+    src: url('../../fonts/Tomorrow-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+}
+
+body {
+    font-family: 'Geist Mono', 'Tomorrow', monospace;
+}
+
+h1, h2, h3, .bold {
+    font-family: 'Tomorrow', 'Geist Mono', sans-serif;
+}
