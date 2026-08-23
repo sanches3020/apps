@@ -1,14 +1,14 @@
 <?php
 
-$mysqli = new mysqli('127.0.0.1', 'root', '', 'store');
+require_once $_SERVER['DOCUMENT_ROOT'] . '/mems/utils/php/db.php';
 
-$params = json_decode(file_get_contents('php://input'), true);
+$mem_id = get('mem_id');
 
-$mem_id = $params['mem_id'];
+if (!$mem_id) {
+    error(['success' => false, 'error' => 'Нет данных']);
+}
 
-$mem_id = $mysqli->real_escape_string($mem_id);
+$result = query("INSERT INTO likes (mem_id, user_id) VALUES ('$mem_id', 1)");
 
-$mysqli->query("INSERT INTO likes (mem_id, user_id) VALUES ('$mem_id', 1)");
-
-header('Content-type: application/json');
-echo json_encode(['success' => true]);
+success(['success' => true]);
+?>

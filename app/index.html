@@ -6,23 +6,31 @@
     <link rel="stylesheet" href="utils/css/colors-theme.css">
     <link rel="stylesheet" href="utils/css/colors.css">
     <link rel="stylesheet" href="utils/css/shorts.css">
-    <link rel="stylesheet" href="utils/css/fonts.css">
+    <link rel="stylesheet" href="utils/css/style.css">
+
+    <script src="node_modules/angular/angular.min.js"></script>
+    <script src="node_modules/angular-material/angular-material.min.js"></script>
+    <script src="node_modules/angular-animate/angular-animate.min.js"></script>
+    <script src="node_modules/angular-aria/angular-aria.min.js"></script>
+    <link rel="stylesheet" href="node_modules/angular-material/angular-material.min.css">
 
     <script src="controller.js"></script>
-    <script src="dialogs/auth.js"></script>
+    <script src="dialogs/login/controller.js"></script>
+    <script src="dialogs/mint/controller.js"></script>
+
 </head>
 
-<body class="back-black text-white" ng-app="app" ng-controller="main">
+<body class="col back-black text-white" ng-app="app" ng-controller="main">
 
 <header class="row asc gap32 ph32 h64 fixed top back-black p8 fill-width text4">
-    <div class="row aec gap16">
+    <div class="row asc gap16">
         <span class="text-white bold uppercase">RARIBLE</span>
         <span class="text-white-60 cursor">Explore</span>
-        <span class="text-gray cursor">Mint</span>
+        <span class="text-gray cursor" ng-click="showMint($event)">Mint</span>
         <span class="text-yellow10 cursor">Gacha</span>
     </div>
 
-    <div class="flex row acc ">
+    <div class="flex row acc">
         <div class="row acc relative w500">
             <img class="img16 absolute left ml8" src="icon/search1.svg">
             <input type="text"
@@ -40,15 +48,19 @@
 
 <main class="col ph32 pv10 gap32 back-black" style="flex: 1; padding-top: 64px;">
     <div class="row asc gap16 text2">
-        <span class="text-white">Live & Upcoming</span>
+        <span class="text-white ">Live & Upcoming</span>
         <span class="text-gray cursor">Past</span>
     </div>
 
 
-    <div class="row aсc wrap gap24 mt16">
+    <div class="row asc wrap gap24 mt16">
 
         <div class="col r8 cursor border-gray p8">
+            <div class="relative">
             <img src="img/nft.jpg" class="img160 r8">
+
+                <img src="icon/like.svg" class="img20 cursor absolute top right" ng-click="like()">
+            </div>
 
             <div class="col p8 gap4">
                 <div class="text-yellow bold">● Minting now</div>
@@ -78,7 +90,7 @@
         <span class="cursor">API</span>
     </div>
 
-    <div class="row gap16 aec">
+    <div class="row gap16 acc">
         <button class="text-white cursor ph8 pv4 r4" style="background: transparent; border: none;">
             USD
         </button>

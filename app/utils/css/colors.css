@@ -251,8 +251,9 @@
 .text-blue {
     color: var(--blue);
 }
-.text-yellow10 {
-    color: var(--yellow10);
+
+.text-yellow {
+    color: var(--yellow);
 }
 
 .back-yellow10 {

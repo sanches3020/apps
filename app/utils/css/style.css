@@ -1,0 +1,55 @@
+@font-face {
+    font-family: 'Geist Mono';
+    src: url('fonts/GeistMono-Regular.ttf') format('truetype');
+}
+
+body {
+    font-family: 'Geist Mono', monospace;
+}
+
+
+.fixed {
+    position: fixed;
+}
+
+
+
+.text0 {
+    font-size: 50px;
+    line-height: 55px;
+    font-weight: bold;
+}
+
+.text1 {
+    text-wrap: wrap;
+    font-size: 32px;
+    line-height: 39px;
+    font-weight: 500;
+}
+
+.text2 {
+    font-size: 24px;
+    line-height: 29px;
+    font-weight: 300;
+}
+
+.text3 {
+    font-size: 20px;
+    line-height: 29px;
+    font-weight: 300;
+}
+
+.text4 {
+    font-size: 16px;
+    font-weight: 300;
+}
+
+.text5 {
+    font-size: 12px;
+    font-weight: 300;
+}
+
+.img160{
+    width: 160px;
+    height: 160px;
+}

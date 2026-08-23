@@ -31,6 +31,13 @@ function query($sql) {
     return $response;
 }
 
+
+/*insert('users', [
+    'user_email' => $params['email'],
+    'user_email' => $params['email'],
+]);*/
+
+
 function success($response) {
     header('Content-type: application/json');
     die(json_encode($response));

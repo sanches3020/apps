@@ -23,4 +23,28 @@ app.controller('main', function ($scope, $http, $mdToast, $mdDialog) {
         showDialog('login', 'dialogs/login')
     }
 
+    $scope.showMint = function () {
+        showDialog('mint', 'dialogs/mint')
+    }
+
+    $scope.mem_id = 1;
+
+    $scope.like = function () {
+        $http.post("api/like.php", { mem_id: $scope.mem_id, user_hash: $scope.user_hash })
+            .then(function(response) {
+                if (response.data.success) {
+                    $mdToast.show(
+                        $mdToast.simple().textContent('Лайк поставлен').hideDelay(3000)
+                    )
+                } else {
+                    $mdToast.show(
+                        $mdToast.simple().textContent('Ошибка: ' + response.data.error).hideDelay(3000)
+                    )
+                }
+            }, function(error) {
+                $mdToast.show(
+                    $mdToast.simple().textContent('Ошибка сервера').hideDelay(3000)
+                )
+            });
+    }
 })
