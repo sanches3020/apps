@@ -1,26 +1,21 @@
 <?php
-require_once $_SERVER['DOCUMENT_ROOT'] . '/mems/utils/php/db.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/utils/php/db.php';
 
-$email = get('email');
-$hash  = get('hash');
+$user_email = get_required(user_email);
+$user_hash  = get_required(user_hash);
 
-if (!$email || !$hash) {
-    error(['success' => false, 'error' => 'Нет данных в запросе']);
+$user = row(users, [user_email => $user_email]);
+
+if ($user != null) {
+    if ($user[user_hash] == $user_hash) {
+        success();
+    } else {
+        error("Неверный пароль");
+    }
+} else {
+    insert(users, [
+        user_email => $user_email,
+        user_hash => $user_hash,
+    ]);
+    success();
 }
-
-$result = query("SELECT password_hash FROM user WHERE email='$email'");
-
-if (empty($result)) {
-    error(['success' => false, 'error' => 'Пользователь не найден']);
-}
-
-$row = $result[0];
-
-if ($row['password_hash'] !== $hash) {
-    error(['success' => false, 'error' => 'Неверный пароль']);
-}
-
-$token = sha1($email . time());
-
-success(['success' => true, 'token' => $token]);
-?>

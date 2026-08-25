@@ -11,4 +11,3 @@ if (!$mem_id) {
 $result = query("INSERT INTO likes (mem_id, user_id) VALUES ('$mem_id', 1)");
 
 success(['success' => true]);
-?>

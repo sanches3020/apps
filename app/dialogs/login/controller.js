@@ -1,27 +1,26 @@
 app.controller('login', function ($scope, $http, $mdToast, $mdDialog) {
 
-    $scope.login = ''
-    $scope.pass = ''
+    $scope.user_email = ''
+    $scope.user_hash = ''
 
-    $scope.close = function (){
+    $scope.close = function () {
         $mdDialog.hide()
     }
 
     $scope.enter = async function () {
-        let response = await fetch("api/login.php", {
-            method: "POST",
-            body: JSON.stringify({
-                login: $scope.login,
-                pass: $scope.pass,
-            })
-        })
-
-        if (response.ok) {
+        $http.post("api/login.php", {
+            user_email: $scope.user_email,
+            user_hash: $scope.user_hash,
+        }).then(function () {
+            localStorage.setItem("user_hash", $scope.user_hash)
             $mdToast.show(
-                $mdToast.simple().textContent('Успешный вход').hideDelay(3000)
+                $mdToast.simple().textContent("Успешный вход").hideDelay(3000)
             )
-            $scope.close()
-        }
-
+            $mdDialog.hide()
+        }).catch(function (error) {
+            $mdToast.show(
+                $mdToast.simple().textContent(error.data.message).hideDelay(3000)
+            )
+        })
     }
 })

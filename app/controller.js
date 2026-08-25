@@ -27,7 +27,7 @@ app.controller('main', function ($scope, $http, $mdToast, $mdDialog) {
         showDialog('mint', 'dialogs/mint')
     }
 
-    $scope.mem_id = 1;
+    $scope.mem_id = 1
 
     $scope.like = function () {
         $http.post("api/like.php", { mem_id: $scope.mem_id, user_hash: $scope.user_hash })
@@ -45,6 +45,15 @@ app.controller('main', function ($scope, $http, $mdToast, $mdDialog) {
                 $mdToast.show(
                     $mdToast.simple().textContent('Ошибка сервера').hideDelay(3000)
                 )
-            });
+            })
     }
+
+
+    $scope.reload = function () {
+        $http.get("api/mems.php").then(function(response) {
+            $scope.mems = response.data
+        })
+    }
+
+    $scope.reload()
 })

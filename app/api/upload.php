@@ -1,16 +1,16 @@
 <?php
 
-require_once $_SERVER['DOCUMENT_ROOT'] . '/mems/utils/php/db.php';  
+require_once $_SERVER['DOCUMENT_ROOT'] . '/utils/php/db.php';
+
+$data = file_get_contents('php://input');
 
 
+$hash = hash('sha1', $data);
 
-$data = $_FILES['file']['tmp_name'];
-$hash = sha1_file($data);
-
-$filename = "/mems/file/$hash.png";
+$filename = "file/$hash.png";
 $filepath = $_SERVER['DOCUMENT_ROOT'] . $filename;
-move_uploaded_file($data, $filepath);
-
+file_put_contents($filepath, $data);
 
 //mysqli-> wefwefwefw
+
 echo json_encode(['success' => true, 'filename' => $filename]);

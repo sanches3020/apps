@@ -36,6 +36,8 @@ services:
     restart: always
     environment:
       - PMA_HOST=${DB_HOST}
+    ports:
+      - "8081:80"
     networks:
       - network
     depends_on:
@@ -50,7 +52,7 @@ services:
       - "81:81"
       - "443:443"
     volumes:
-      - ./npm:/data
+      - ./nginx:/data
       - ./letsencrypt:/etc/letsencrypt
     networks:
       - network

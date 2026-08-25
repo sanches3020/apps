@@ -1,50 +1,33 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-    <link rel="stylesheet" href="utils/css/colors-theme.css">
-    <link rel="stylesheet" href="utils/css/colors.css">
-    <link rel="stylesheet" href="utils/css/shorts.css">
-    <link rel="stylesheet" href="utils/css/style.css">
-
-    <script src="/app/node_modules/angular/angular.min.js"></script>
-    <script src="/app/node_modules/angular-material/angular-material.min.js"></script>
-    <script src="/app/node_modules/angular-animate/angular-animate.min.js"></script>
-    <script src="/app/node_modules/angular-aria/angular-aria.min.js"></script>
-    <link rel="stylesheet" href="/app/node_modules/angular-material/angular-material.min.css">
-
-    <script src="controller.js"></script>
-    <script src="/app/dialogs/login/controller.js"></script>
-    <script src="../../controller.js"></script>
-</head>
-
-<div class="col aic gap16 back-gray100 r16 p32 relative">
-    <img class="img20 cursor" style="position: absolute; top: 16px; right: 16px;" src="icon/close.svg" ng-click="close()">
-    <div style="width: 100%; text-align: center; margin-top: 10px;">
+<div class="col gap16 back-gray100 p32 relative">
+    <img class="img20 cursor absolute top right m16" src="/icon/close.svg"
+         ng-click="close()">
+    <div class="row acc">
         <span class="text-white bold text2">Mint</span>
     </div>
 
-    <div class="row gap16">
-        <div class="col aic back-gray200 r8 p8" style="flex: 1;">
-        <img src="img/nft.jpg" class="img160 r8">
-    </div>
-
-    <div class="col gap16" style="flex:1;">
-        <div class="col gap8">
-            <span class="text-gray text-14">Amount</span>
-            <input type="number" ng-model="amount" placeholder="1"
-                   class="flex back-gray100 border-gray r4 p8 text-white pl32">
+    <div class="row gap16 back-gray100">
+        <div class="col back-gray200 r8 p8"
+             ng-click="upload()">
+            <img src="/img/nft.jpg" class="img160 r8">
         </div>
 
-        <div class="col gap8">
-            <span class="text-gray text-14">Price</span>
-            <input type="text" ng-model="price" placeholder="0.05"
-                   class="flex back-gray100 border-gray r4 p8 text-white pl32">
-        </div>
+        <div class="col gap16">
+            <div class="col gap8">
+                <span class="text-gray text-14">Заголовок</span>
+                <input type="text" ng-model="mem_title" placeholder="Заголовок"
+                       class="flex back-gray100 border-gray r4 p8 text-white pl32">
+            </div>
 
-        <button ng-click="confirmMint()"
-                class="flex back-gray100 border-gray r4 p8 text-white pl32">
-            Confirm
-        </button>
+            <div class="col gap8">
+                <span class="text-gray text-14">Цена</span>
+                <input type="number" ng-model="mem_price" placeholder="Цена"
+                       class="flex back-gray100 border-gray r4 p8 text-white pl32">
+            </div>
+
+            <button ng-click="save()"
+                    class="flex back-gray100 border-gray r4 p8 text-white">
+                Сохранить
+            </button>
+        </div>
     </div>
+
