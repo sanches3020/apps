@@ -1,15 +1,25 @@
 <?php
 
-require_once $_SERVER['DOCUMENT_ROOT'] . '/mems/utils/php/db.php';
+$mem_id = get_required(mem_id);
+$user_hash = get_required(user_hash);
 
-$mem_id = get('mem_id');
-$user_hash = get('user_hash');
-
-if (!$mem_id || !$user_hash) {
-    error(['success' => false, 'error' => 'Нет данных']);
+$liker = row(users,[$user_hash => $user_hash]);
+if ($liker === null) {
+    error("не найден");
 }
 
-$result = query("INSERT INTO likes (mem_id, user_hash) VALUES ('$mem_id', '$user_hash')");
+$mem = row(mems,[$mem_id => $mem_id]);
+if ($mem === null) {
+    error("мем не найден");
+}
 
-success(['success' => true, 'message' => 'Лайк поставлен']);
-?>
+$owner_id = $mem['user_id'];
+$liker_id = $liker['user_id'];
+
+update(users, [user_id => $owner_id], [
+    balance => sql("balance + 1")
+]);
+
+update(users, [user_id => $liker_id], [
+    balance => sql("balance + 1")
+]);
