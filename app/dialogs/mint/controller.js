@@ -16,7 +16,7 @@ app.controller('mint', function ($scope, $http, $mdToast, $mdDialog) {
     }
 
     $scope.upload = function () {
-        // select file
+      
         var blob = new Blob([data], {type: 'application/octet-stream'})
         $http.post('/api/upload.php', blob).then(function (response) {
             $scope.mem_image = response.data.filename
