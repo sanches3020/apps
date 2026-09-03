@@ -2,8 +2,8 @@
 
 require_once $_SERVER['DOCUMENT_ROOT'] . '/utils/php/db.php';
 
-$mem_id = $_POST["mem_id"];
-$user_hash = $_POST["user_hash"];
+$mem_id = get_required("mem_id");
+$user_hash = get_required("user_hash");
 
 $liker = row("users",["user_hash" => $user_hash]);
 
