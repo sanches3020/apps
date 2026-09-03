@@ -138,7 +138,6 @@ app.controller('main', function ($scope, $http, $mdToast, $mdDialog) {
                 return
             }
 
-            mem.mem_price = response.data.new_price
 
             $mdToast.show(
                 $mdToast.simple()
