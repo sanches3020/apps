@@ -68,11 +68,7 @@ app.controller('main', function ($scope, $http, $mdToast, $mdDialog) {
         })
     }
 
-    $scope.reload = function () {
-        $http.get("api/mems.php").then(function (response) {
-            $scope.mems = response.data
-        })
-    }
+
 
     $scope.getMatches = function (text) {
 
@@ -161,6 +157,15 @@ app.controller('main', function ($scope, $http, $mdToast, $mdDialog) {
                     .textContent('Ошибка сервера')
                     .hideDelay(3000)
             )
+        })
+    }
+
+    $scope.reload = function () {
+        $http.get("api/mems.php").then(function (response) {
+            $scope.mems = response.data
+        })
+        $http.get("api/login.php").then(function (response) {
+            $scope.mems = response.data
         })
     }
 

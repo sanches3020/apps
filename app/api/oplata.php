@@ -1,6 +1,6 @@
 <?php
 
-require_once $_SERVER['DOCUMENT_ROOT'] . '/utils/php/db.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/api/auth.php';
 
 $mem_id = get_required("mem_id");
 $user_hash = get_required("user_hash");
