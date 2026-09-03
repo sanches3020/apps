@@ -126,9 +126,6 @@ app.controller('main', function ($scope, $http, $mdToast, $mdDialog) {
 
     $scope.percent = function (mem) {
 
-        let fd = new FormData()
-        fd.append("mem_id", mem.mem_id)
-        fd.append("user_hash", $scope.user.user_hash)
 
         $http.post("api/percent.php", {mem_id:mem.mem_id, user_hash:localStorage.getItem("user_hash")}).then(function (response) {
             $scope.reload()
