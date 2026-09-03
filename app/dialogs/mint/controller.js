@@ -15,14 +15,13 @@ app.controller('mint', function ($scope, $http, $mdToast, $mdDialog) {
         $scope.close()
     }
 
-    $scope.upload = function () {
-        // select file
-        var blob = new Blob([data], {type: 'application/octet-stream'})
-        $http.post('/api/upload.php', blob).then(function (response) {
+    $scope.upload = function (file) {
+        $http.post('/api/upload.php', file).then(function (response) {
             $scope.mem_image = response.data.filename
         }).catch(function () {
 
         })
+
     }
 
     $scope.save = function () {

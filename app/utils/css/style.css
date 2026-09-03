@@ -1,7 +1,8 @@
 @font-face {
-    font-family: 'Geist Mono';
-    src: url('fonts/GeistMono-Regular.ttf') format('truetype');
+    font-family: 'GeistMono';
+    src: url('/utils/fonts/GeistMono-Regular.ttf') format('truetype');
 }
+
 
 body {
     font-family: 'Geist Mono', monospace;
@@ -55,4 +56,24 @@ body {
 }
 md-dialog {
     background: transparent;
+}
+button {
+    background: transparent;
+    border: none;
+    outline: none;
+}
+.search-sm .md-input {
+    height: 26px !important;
+    line-height: 26px !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+.search-sm .md-autocomplete-wrap {
+    background: transparent !important;
+}
+
+.search-sm .md-input {
+    background: transparent !important;
+    color: white !important;
 }

@@ -32,13 +32,39 @@
     </div>
 
     <div class="flex row acc">
-        <div class="row acc relative w500">
+        <div class="row acc relative w500 border-gray r4 ph8 text-white pl32">
             <img class="img16 absolute left ml8" src="icon/search1.svg">
-            <input type="text"
-                   class="flex back-black border-gray r4 p8 text-white pl32"
-                   placeholder="Search collections and items">
+
+            <md-autocomplete
+                    class="flex text-white search-sm"
+                    md-selected-item="selectedItem"
+                    md-search-text="searchText"
+                    md-items="item in getMatches(searchText)"
+                    md-item-text="item.mem_title"
+                    md-min-length="1"
+                    md-no-cache="true"
+                    md-autocomplete-snap="width"
+                    md-input-name="searchInput"
+                    placeholder="Search collections and items">
+
+                <md-item-template>
+                    <div class="row aic gap8 p8">
+                        <img class="img32 r4" ng-src="{{item.poster}}">
+                        <div class="col">
+                            <span class="text-white"> {{ item.user_name }}</span>
+                            <small class="text-gray">{{ item.user_name }}</small>
+                        </div>
+                    </div>
+                </md-item-template>
+
+                <md-not-found>
+                    <div class="text-gray p8">No matches found.</div>
+                </md-not-found>
+
+            </md-autocomplete>
         </div>
     </div>
+
 
     <div class="row aec">
         <button class="back-yellow text-black ph16 pv8 r16" ng-click="showLogin()">
@@ -56,55 +82,67 @@
 
     <div class="row asc wrap gap24 mt16">
 
-        <div class="col r8 cursor border-gray p8">
+        <div class="col r8 cursor border-gray p8" ng-repeat="mem in mems">
             <div class="relative">
             <img src="img/nft.jpg" class="img160 r8">
 
-                <img src="icon/like.svg" class="img20 cursor absolute top right" ng-click="like()">
+                <img src="icon/like.svg" class="img20 cursor absolute top right" ng-click="like(mem)">
             </div>
 
             <div class="col p8 gap4">
-                <div class="text-yellow bold">● Minting now</div>
+                <div class="text-yellow bold">{{mem.mem_title}}</div>
                 <div class="row asc gap8">
-                    <div class="text-white bold uppercase">RARE AGENTS</div>
+                    <div class="text-white bold uppercase">{{ mem.user_name }}</div>
                     <img src="icon/verified.svg" class="img16">
                 </div>
+            </div>
 
                 <div class="row asc gap8">
-                    <div class="text-white bold text2">$4.78</div>
+                    <div class="text-white bold text2">${{mem.mem_price}}</div>
                     <img src="icon/info.svg" class="img16">
                 </div>
 
-                <div class="text-gray">77 / 150 minted</div>
-            </div>
+                <button ng-click="buy(mem)"
+                        class="back-yellow text-black ph16 pv8 r16">
+                    Купить
+                </button>
+            <button ng-if="mem.user_id == user.user_id"
+                    ng-click="percent(mem)"
+                    class="back-yellow text-black ph16 pv8 r16">
+                Поднять +10%
+            </button>
+        </div>
         </div>
     </div>
 </main>
 
-<footer class="row asc wrap gap16 p16 border-gray text-gray r8 fixed bottom back-black"
-        style="margin: 0 auto; justify-content: space-between; max-width: 1400px; width: 100%;">
-    <div class="row gap16 asc">
-        <span>© Gahinga Inc.</span>
-        <span class="cursor">Terms</span>
-        <span class="cursor">Privacy</span>
-        <span class="cursor">FAQ</span>
-        <span class="cursor">API</span>
-    </div>
+<div class="fixed bottom fill-width">
+    <footer class="row asc wrap gap16 p16 mb16 mh32 border-gray text-gray r8 back-black">
+        <div class="row gap8 asc">
+            <span>© Gahinga Inc.</span>
+            <span class="cursor">Terms</span>
+            <span class="cursor">Privacy</span>
+            <span class="cursor">FAQ</span>
+            <span class="cursor">API</span>
+        </div>
 
-    <div class="row gap16 acc">
-        <button class="text-white cursor ph8 pv4 r4" style="background: transparent; border: none;">
-            USD
-        </button>
-        <button class="text-white cursor ph8 pv4 r4" style="background: transparent; border: none;">
-            Crypto
-        </button>
-        <img src="icon/eth.svg" class="img16">
-        <span class="text-white">$1,914</span>
-        <img src="icon/solana.svg" class="img16">
-        <span class="text-white">$76.84</span>
-        <img src="icon/discord.svg" class="img16">
-        <span class="cursor">Community</span>
-    </div>
-</footer>
+        <div class="flex row aec gap16">
+            <div class="row gap8 aec">
+                <button class="text-white cursor ph8 pv4 r4">USD</button>
+                <button class="text-white cursor ph8 pv4 r4">Crypto</button>
+            </div>
+
+            <img src="icon/eth.svg" class="img16">
+            <span class="text-white">$1,914</span>
+
+            <img src="icon/solana.svg" class="img16">
+            <span class="text-white">$76.84</span>
+
+            <img src="icon/discord.svg" class="img16">
+            <span class="cursor">Community</span>
+        </div>
+
+    </footer>
+</div>
 </body>
 </html>
