@@ -129,19 +129,10 @@ app.controller('main', function ($scope, $http, $mdToast, $mdDialog) {
 
         $http.post("api/percent.php", {mem_id:mem.mem_id, user_hash:localStorage.getItem("user_hash")}).then(function (response) {
             $scope.reload()
-            if (!response.data.success) {
-                $mdToast.show(
-                    $mdToast.simple()
-                        .textContent(response.data.error)
-                        .hideDelay(3000)
-                )
-                return
-            }
-
 
             $mdToast.show(
                 $mdToast.simple()
-                    .textContent('+10%')
+                    .textContent('успешно')
                     .hideDelay(3000)
             )
 
