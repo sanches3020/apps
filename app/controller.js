@@ -164,7 +164,7 @@ app.controller('main', function ($scope, $http, $mdToast, $mdDialog) {
         $http.get("api/mems.php").then(function (response) {
             $scope.mems = response.data
         })
-        $http.get("api/profile.php?user_hash=123").then(function (response) {
+        $http.get("api/profile.php?user_hash="+ localStorage.getItem("user_hash")).then(function (response) {
             $scope.user = response.data
         })
     }
