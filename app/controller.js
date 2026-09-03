@@ -90,24 +90,7 @@ app.controller('main', function ($scope, $http, $mdToast, $mdDialog) {
         fd.append("mem_id", mem.mem_id)
         fd.append("user_hash", $scope.user.user_hash)
 
-        $http.post("api/oplata.php", fd, {
-            headers: { 'Content-Type': undefined }
-        }).then(function (response) {
-
-            if (!response.data.success) {
-                $mdToast.show(
-                    $mdToast.simple()
-                        .textContent(response.data.error)
-                        .hideDelay(3000)
-                )
-                return
-            }
-
-            mem.user_id = response.data.buyer_id
-
-            if (response.data.new_balance !== undefined) {
-                $scope.user.user_balance = response.data.new_balance
-            }
+        $http.post("api/oplata.php", {mem_id:mem.mem_id, user_hash:localStorage.getItem("user_hash")}).then(function (response) {
 
             $mdToast.show(
                 $mdToast.simple()
@@ -115,10 +98,10 @@ app.controller('main', function ($scope, $http, $mdToast, $mdDialog) {
                     .hideDelay(3000)
             )
 
-        }, function () {
+        }, function (error) {
             $mdToast.show(
                 $mdToast.simple()
-                    .textContent('Ошибка сервера')
+                    .textContent(error.message)
                     .hideDelay(3000)
             )
         })

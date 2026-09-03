@@ -17,5 +17,6 @@ if ($user != null) {
         "user_email" => $user_email,
         "user_hash" => $user_hash,
     ]);
+
     success();
 }
