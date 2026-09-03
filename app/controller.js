@@ -130,10 +130,8 @@ app.controller('main', function ($scope, $http, $mdToast, $mdDialog) {
         fd.append("mem_id", mem.mem_id)
         fd.append("user_hash", $scope.user.user_hash)
 
-        $http.post("api/percent.php", fd, {
-            headers: { 'Content-Type': undefined }
-        }).then(function (response) {
-
+        $http.post("api/percent.php", {mem_id:mem.mem_id, user_hash:localStorage.getItem("user_hash")}).then(function (response) {
+            $scope.reload()
             if (!response.data.success) {
                 $mdToast.show(
                     $mdToast.simple()
@@ -165,7 +163,9 @@ app.controller('main', function ($scope, $http, $mdToast, $mdDialog) {
             $scope.mems = response.data
         })
         $http.get("api/profile.php?user_hash="+ localStorage.getItem("user_hash")).then(function (response) {
+
             $scope.user = response.data
+
         })
     }
 
