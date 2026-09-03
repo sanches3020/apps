@@ -25,6 +25,8 @@ if($liker_id === $owner_id) {
 
 $owner = row("users",["user_id" => $owner_id]);
 
+
+
 update("users", ["user_balance" => $liker['user_balance'] + 1], ["user_id" => $liker_id]);
 update("users", ["user_balance" => $owner['user_balance'] + 1], ["user_id" => $owner_id]);
 

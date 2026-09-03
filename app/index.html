@@ -84,7 +84,7 @@
 
         <div class="col r8 cursor border-gray p8" ng-repeat="mem in mems">
             <div class="relative">
-            <img src="img/nft.jpg" class="img160 r8">
+                <img src="img/nft.jpg" class="img160 r8">
 
                 <img src="icon/like.svg" class="img20 cursor absolute top right" ng-click="like(mem)">
             </div>
@@ -97,22 +97,22 @@
                 </div>
             </div>
 
-                <div class="row asc gap8">
-                    <div class="text-white bold text2">${{mem.mem_price}}</div>
-                    <img src="icon/info.svg" class="img16">
-                </div>
+            <div class="row asc gap8">
+                <div class="text-white bold text2">${{mem.mem_price}}</div>
+                <img src="icon/info.svg" class="img16">
+            </div>
 
-                <button ng-click="buy(mem)"
-                        class="back-yellow text-black ph16 pv8 r16">
-                    Купить
-                </button>
+            <button ng-click="buy(mem)"
+                    class="back-yellow text-black ph16 pv8 r16">
+                Купить
+            </button>
             <button ng-if="mem.user_id == user.user_id"
                     ng-click="percent(mem)"
                     class="back-yellow text-black ph16 pv8 r16">
                 Поднять +10%
             </button>
         </div>
-        </div>
+    </div>
     </div>
 </main>
 
