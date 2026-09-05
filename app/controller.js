@@ -52,6 +52,7 @@ app.controller('main', function ($scope, $http, $mdToast, $mdDialog) {
             }
 
             mem.likes_count++
+            $scope.reload()
 
             $mdToast.show(
                 $mdToast.simple()

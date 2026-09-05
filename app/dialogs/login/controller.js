@@ -22,5 +22,13 @@ app.controller('login', function ($scope, $http, $mdToast, $mdDialog) {
                 $mdToast.simple().textContent(error.data.message).hideDelay(3000)
             )
         })
+        $scope.logout = function () {
+            localStorage.removeItem("user_hash")
+            $scope.user = null
+
+            $mdToast.show(
+                $mdToast.simple().textContent("Успешный выход").hideDelay(3000)
+            )
+        }
     }
 })
