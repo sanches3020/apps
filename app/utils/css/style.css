@@ -69,11 +69,41 @@ button {
     padding-bottom: 0 !important;
 }
 
-.search-sm .md-autocomplete-wrap {
-    background: transparent !important;
+.search-sm,
+.search-sm .md-autocomplete-wrap,
+.search-sm .md-input {
+    background: var(--black) !important;
 }
 
-.search-sm .md-input {
-    background: transparent !important;
-    color: white !important;
+.search-sm input.md-input,
+.search-sm input.md-input:focus {
+    color: var(--white) !important;
+    -webkit-text-fill-color: var(--white) !important;
+    opacity: 1 !important;
+    caret-color: var(--white) !important;
+}
+
+.search-sm input.md-input::placeholder {
+    color: var(--gray500) !important;
+    -webkit-text-fill-color: var(--gray500) !important;
+    opacity: 1 !important;
+}
+
+.md-autocomplete-suggestions-container,
+.md-autocomplete-suggestions,
+.md-autocomplete-suggestions li {
+    background: var(--black) !important;
+    color: var(--white) !important;
+}
+
+.md-autocomplete-suggestions li md-highlight-text,
+.md-autocomplete-suggestions li span,
+.md-autocomplete-suggestions li small {
+    color: var(--white) !important;
+    -webkit-text-fill-color: var(--white) !important;
+}
+
+.md-autocomplete-suggestions li small {
+    color: var(--gray500) !important;
+    -webkit-text-fill-color: var(--gray500) !important;
 }

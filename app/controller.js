@@ -44,6 +44,7 @@ app.controller('main', function ($scope, $http, $mdToast, $mdDialog) {
     $scope.mem_id = 1
 
     $scope.like = function (mem) {
+
         let fd = new FormData()
         fd.append("mem_id", mem.mem_id)
         fd.append("user_hash", $scope.user.user_hash)
@@ -87,11 +88,14 @@ app.controller('main', function ($scope, $http, $mdToast, $mdDialog) {
             return []
         }
 
-        var query = text.toLowerCase()
+        var query = text.trim().toLowerCase()
+
+        if (!query) {
+            return $scope.mems
+        }
 
         return $scope.mems.filter(function (item) {
-            return item.mem_title &&
-                item.mem_title.toLowerCase().indexOf(query) !== -1
+            return item.mem_title && item.mem_title.toLowerCase().indexOf(query) !== -1
         })
     }
 

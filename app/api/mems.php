@@ -21,7 +21,7 @@ foreach ($mems as $mem) {
         "mem_title"   => $mem["mem_title"],
         "mem_price"   => $mem["mem_price"],
         "user_id"     => $mem["user_id"],
-        "image"       => $mem["mem_image"],
+        "mem_image"   => $mem["mem_image"],
         "likes_count" => $likes_count,
         "user_name"   => $user ? $user["user_email"] : "",
     ];

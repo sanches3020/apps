@@ -7,7 +7,7 @@ $data = file_get_contents('php://input');
 
 $hash = hash('sha1', $data);
 
-$filename = "file/$hash.png";
+$filename = "/file/$hash.png";
 $filepath = $_SERVER['DOCUMENT_ROOT'] . $filename;
 
 if (file_put_contents($filepath, $data) === false) {

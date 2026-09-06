@@ -7,13 +7,14 @@
     <link rel="stylesheet" href="utils/css/colors-theme.css">
     <link rel="stylesheet" href="utils/css/colors.css">
     <link rel="stylesheet" href="utils/css/shorts.css">
+    <link rel="stylesheet" href="node_modules/angular-material/angular-material.min.css">
     <link rel="stylesheet" href="utils/css/style.css">
 
     <script src="node_modules/angular/angular.min.js"></script>
     <script src="node_modules/angular-material/angular-material.min.js"></script>
     <script src="node_modules/angular-animate/angular-animate.min.js"></script>
     <script src="node_modules/angular-aria/angular-aria.min.js"></script>
-    <link rel="stylesheet" href="node_modules/angular-material/angular-material.min.css">
+
 
     <script src="controller.js"></script>
     <script src="dialogs/login/controller.js"></script>
@@ -49,9 +50,9 @@
 
                 <md-item-template>
                     <div class="row aic gap8 p8">
-                        <img class="img32 r4" ng-src="{{item.poster}}">
+                        <img class="img32 r4" ng-src="{{item.mem_image}}">
                         <div class="col">
-                            <span class="text-white"> {{ item.user_name }}</span>
+                            <span class="text-white" md-highlight-text="searchText">{{ item.mem_title }}</span>
                             <small class="text-gray">{{ item.user_name }}</small>
                         </div>
                     </div>
@@ -93,10 +94,15 @@
 
     <div class="row asc wrap gap24 mt16">
 
-        <div class="col r8 cursor border-gray p8" ng-repeat="mem in mems">
+        <div class="col r8 cursor border-gray p8" ng-repeat="mem in (searchText ? getMatches(searchText) : mems)">
             <div class="relative">
                 <img ng-src="{{ mem.mem_image }}" class="img160 r8">
-                <img src="icon/like.svg" class="img20 cursor absolute top right" ng-click="like(mem)">
+                <img
+                        ng-src="{{ mem.is_liked ? 'icon/like-filled.svg' : 'icon/like.svg' }}"
+                        class="img20 absolute top right"
+                        ng-class="{cursor: !mem.is_liked}"
+                        ng-click="like(mem)"
+                        alt="Лайк">
             </div>
 
             <div class="col p8 gap4">
