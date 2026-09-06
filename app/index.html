@@ -65,10 +65,17 @@
         </div>
     </div>
 
-
     <div class="row aec">
-        <button class="back-yellow text-black ph16 pv8 r16" ng-click="showLogin()">
+        <button ng-if="!user"
+                class="back-yellow text-black ph16 pv8 r16"
+                ng-click="showLogin()">
             Login
+        </button>
+
+        <button ng-if="user"
+                class="back-yellow text-black ph16 pv8 r16"
+                ng-click="logout()">
+            Logout
         </button>
     </div>
 </header>

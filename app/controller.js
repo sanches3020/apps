@@ -27,6 +27,16 @@ app.controller('main', function ($scope, $http, $mdToast, $mdDialog) {
         showDialog('login', 'dialogs/login')
     }
 
+    $scope.logout = function () {
+        localStorage.removeItem("user_hash")
+        $scope.user = null
+
+        $mdToast.show(
+            $mdToast.simple().textContent("Успешный выход").hideDelay(3000)
+        )
+    }
+
+
     $scope.showMint = function () {
         showDialog('mint', 'dialogs/mint')
     }
