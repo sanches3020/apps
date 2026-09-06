@@ -7,8 +7,12 @@
     <div class="row gap16 back-gray100">
         <div class="col back-gray200 r8 p8">
             <input type="file" onchange="angular.element(this).scope().upload(this.files[0])">
-            <img src="/img/nft.jpg" class="img160 r8">
         </div>
+
+        <img ng-if="mem_image"
+             ng-src="{{ mem_image }}"
+             class="img160 r8 mt8">
+    </div>
 
         <div class="col gap8">
             <div class="col gap8">
@@ -29,5 +33,3 @@
             </button>
         </div>
     </div>
-
-</div>

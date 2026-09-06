@@ -1,8 +1,8 @@
 app.controller('mint', function ($scope, $http, $mdToast, $mdDialog) {
 
-    $scope.mem_title = 'wef'
-    $scope.mem_price = '12'
-    $scope.mem_image = 'file/17eee9a660f4190128cd8e26e66ebc7ac3893a84.png'
+    $scope.mem_title = ''
+    $scope.mem_price = ''
+    $scope.mem_image = ''
 
     $scope.close = function () {
         $mdDialog.hide()
@@ -37,7 +37,7 @@ app.controller('mint', function ($scope, $http, $mdToast, $mdDialog) {
             $mdDialog.hide()
         }).catch(function () {
             $mdToast.show(
-                $mdToast.simple().textContent('Ощибка').hideDelay(3000)
+                $mdToast.simple().textContent('Ошибка').hideDelay(3000)
             )
         })
     }

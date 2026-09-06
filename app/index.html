@@ -95,7 +95,7 @@
 
         <div class="col r8 cursor border-gray p8" ng-repeat="mem in mems">
             <div class="relative">
-                <img src="img/nft.jpg" class="img160 r8">
+                <img ng-src="{{ mem.mem_image }}" class="img160 r8">
                 <img src="icon/like.svg" class="img20 cursor absolute top right" ng-click="like(mem)">
             </div>
 
