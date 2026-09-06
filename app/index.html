@@ -66,6 +66,10 @@
     </div>
 
     <div class="row aec">
+          <span ng-if="user" class="text-white bold mr16 row aic gap8">
+        <img src="icon/coin.svg" class="img20">
+        {{ user.user_balance }}
+    </span>
         <button ng-if="!user"
                 class="back-yellow text-black ph16 pv8 r16"
                 ng-click="showLogin()">
