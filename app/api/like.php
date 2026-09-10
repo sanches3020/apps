@@ -23,9 +23,14 @@ if($liker_id === $owner_id) {
     error("ты лайкаешь свой мем долбаеб");
 }
 
+$already = row("likes", ["mem_id" => $mem_id, "user_id" => $liker_id]);
+if ($already) {
+    error("ты уже лайкал этот мем идиотина");
+}
+
+insert("likes", ["mem_id" => $mem_id, "user_id" => $liker_id]);
+
 $owner = row("users",["user_id" => $owner_id]);
-
-
 
 update("users", ["user_balance" => $liker['user_balance'] + 1], ["user_id" => $liker_id]);
 update("users", ["user_balance" => $owner['user_balance'] + 1], ["user_id" => $owner_id]);
