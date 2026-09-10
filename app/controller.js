@@ -1,4 +1,4 @@
-var app = angular.module('app', ['ngMaterial', 'ngAnimate', 'ngAria'])
+var app = angular.module('app', ['ngMaterial', 'ngAnimate', 'ngAria', 'ngMessages'])
 
 app.controller('main', function ($scope, $http, $mdToast, $mdDialog) {
 

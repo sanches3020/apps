@@ -3,10 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <title>Мем стор</title>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="utils/css/colors-theme.css">
     <link rel="stylesheet" href="utils/css/colors.css">
     <link rel="stylesheet" href="utils/css/shorts.css">
+    <link rel="stylesheet" href="utils/css/base.css">
+    <link rel="stylesheet" href="utils/css/animation.css">
     <link rel="stylesheet" href="node_modules/angular-material/angular-material.min.css">
     <link rel="stylesheet" href="utils/css/style.css">
 
@@ -14,7 +16,7 @@
     <script src="node_modules/angular-material/angular-material.min.js"></script>
     <script src="node_modules/angular-animate/angular-animate.min.js"></script>
     <script src="node_modules/angular-aria/angular-aria.min.js"></script>
-
+    <script src="node_modules/angular-messages/angular-messages.min.js"></script>
 
     <script src="controller.js"></script>
     <script src="dialogs/login/controller.js"></script>
@@ -22,10 +24,12 @@
 
 </head>
 
-<body class="col back-black text-white" ng-app="app" ng-controller="main">
+<body class="col back-black text-white relative" ng-app="app" ng-controller="main">
 
 <header class="row asc gap32 ph32 h64 fixed top back-black p8 fill-width text4">
-    <div class="row asc gap16">
+    <img class="img32" src="img/logo.svg">
+
+    <div class="row asc gap16 mob-hide">
         <span class="text-white bold uppercase">RARIBLE</span>
         <span class="text-white-60 cursor">Explore</span>
         <span class="text-gray cursor" ng-click="showMint($event)">Mint</span>
@@ -33,11 +37,11 @@
     </div>
 
     <div class="flex row acc">
-        <div class="row acc relative w500 border-gray r4 ph8 text-white pl32">
-            <img class="img16 absolute left ml8" src="icon/search1.svg">
+        <div class="row acc w300">
 
             <md-autocomplete
                     class="flex text-white search-sm"
+                    style="max-width: 100%; width: 300px;"
                     md-selected-item="selectedItem"
                     md-search-text="searchText"
                     md-items="item in getMatches(searchText)"
@@ -46,7 +50,7 @@
                     md-no-cache="true"
                     md-autocomplete-snap="width"
                     md-input-name="searchInput"
-                    placeholder="Search collections and items">
+                    placeholder="Поиск">
 
                 <md-item-template>
                     <div class="row aic gap8 p8">
@@ -94,7 +98,9 @@
 
     <div class="row asc wrap gap24 mt16">
 
-        <div class="col r8 cursor border-gray p8" ng-repeat="mem in (searchText ? getMatches(searchText) : mems)">
+        <div class="col r8 cursor border-gray p8"
+             style="max-width:180px"
+             ng-repeat="mem in (searchText ? getMatches(searchText) : mems)">
             <div class="relative">
                 <img ng-src="{{ mem.mem_image }}" class="img160 r8">
                 <img
@@ -108,7 +114,7 @@
             <div class="col p8 gap4">
                 <div class="text-yellow bold">{{mem.mem_title}}</div>
                 <div class="row asc gap8">
-                    <div class="text-white bold uppercase">{{ mem.user_name }}</div>
+                    <div class="text-white bold uppercase nowrap-disabled">{{ mem.user_name }}</div>
                     <img src="icon/verified.svg" class="img16">
                 </div>
             </div>
@@ -130,12 +136,11 @@
             </button>
         </div>
     </div>
-    </div>
+    <div class="h100 w100" style="min-height: 100px"></div>
 </main>
-<div class="h100 w100"></div>
 
-<div class="fixed bottom fill-width">
-    <footer class="row asc wrap gap16 p16 mb16 mh32 border-gray text-gray r8 back-black">
+<div class="fixed bottom fill-width mob-hide">
+    <footer class="flex row asc wrap gap16 p16 mb16 mh32 border-gray text-gray r8 back-black">
         <div class="row gap8 asc">
             <span>© Gahinga Inc.</span>
             <span class="cursor">Terms</span>
@@ -159,8 +164,11 @@
             <img src="icon/discord.svg" class="img16">
             <span class="cursor">Community</span>
         </div>
-
     </footer>
+</div>
+<div class="row acc back-yellow fixed right bottom p16 r100 ripple mob-show m32"
+     ng-click="showMint()">
+    <img class="img32" src="icon/plus.svg">
 </div>
 </body>
 </html>

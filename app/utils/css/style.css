@@ -54,14 +54,11 @@ body {
     width: 160px;
     height: 160px;
 }
+
 md-dialog {
     background: transparent;
 }
-button {
-    background: transparent;
-    border: none;
-    outline: none;
-}
+
 .search-sm .md-input {
     height: 26px !important;
     line-height: 26px !important;
@@ -106,4 +103,9 @@ button {
 .md-autocomplete-suggestions li small {
     color: var(--gray500) !important;
     -webkit-text-fill-color: var(--gray500) !important;
+}
+
+
+.dialog{
+    max-width: 100%;
 }
