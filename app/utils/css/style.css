@@ -1,13 +1,52 @@
 @font-face {
     font-family: 'GeistMono';
-    src: url('/utils/fonts/GeistMono-Regular.ttf') format('truetype');
+    src: url('/app/fonts/GeistMono.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+body, button, input, textarea, select {
+    font-family: 'GeistMono', monospace !important;
+}
+.text-mono {
+    font-family: 'GeistMono', monospace !important;
+}
+.md-button,
+.md-input,
+.md-autocomplete,
+.md-default-theme {
+    font-family: 'GeistMono', monospace !important;
 }
 
 
-body {
-    font-family: 'Geist Mono', monospace;
+.login-dialog .login-input,
+.login-dialog .login-input:focus {
+    background: var(--black) !important;
+    color: var(--white) !important;
+    -webkit-text-fill-color: var(--white) !important;
 }
 
+.login-dialog .login-input::placeholder {
+    color: var(--gray500) !important;
+    -webkit-text-fill-color: var(--gray500) !important;
+}
+
+.login-protected {
+    align-self: center;
+    text-align: center;
+}
+
+button,
+.button,
+[ng-click],
+input:not([type="checkbox"]) {
+    transition: background-color 0.2s ease, background-position 0.3s ease, color 0.2s ease, transform 0.2s ease, opacity 0.2s ease;
+}
+
+button:hover:not([disabled]),
+.button:hover:not([disabled]),
+[ng-click]:hover {
+    transform: translateY(-1px);
+}
 
 .fixed {
     position: fixed;
@@ -106,6 +145,180 @@ md-dialog {
 }
 
 
+
 .dialog{
     max-width: 100%;
 }
+
+.like-btn {
+    transition: transform 0.25s ease, opacity 0.25s ease;
+    opacity: 0.8;
+}
+
+.like-btn.enable {
+    transform: scale(1.35);
+    opacity: 1;
+}
+
+.like-btn.disable {
+    transform: scale(1);
+    opacity: 0.8;
+}
+
+.mem-card {
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.mem-card:hover {
+    transform: translateY(-4px);
+    border-color: #ffffff40;
+    box-shadow: 0 8px 20px rgba(255, 255, 255, 0.05);
+}
+
+.hidden {
+    display: none !important;
+}
+
+@media (max-width: 768px) {
+    body {
+        padding: 0 12px;
+    }
+
+    .row {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .col {
+        width: 100%;
+    }
+
+    .img160 {
+        width: 120px;
+        height: 120px;
+    }
+}
+@media (max-width: 1024px) {
+    .mem-card {
+        width: calc(50% - 16px);
+    }
+}
+
+@media (max-width: 768px) {
+    .mem-card {
+        width: 100%;
+    }
+}
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        gap: 16px;
+        padding: 16px;
+        height: auto;
+    }
+
+    header .row {
+        flex-direction: column;
+        gap: 12px;
+    }
+}
+@media (max-width: 768px) {
+    .search-sm {
+        width: 100% !important;
+    }
+
+    .search-sm input.md-input {
+        font-size: 14px;
+    }
+}
+@media (max-width: 768px) {
+    .dialog {
+        width: 100%;
+        padding: 20px;
+        border-radius: 12px;
+    }
+
+    .dialog .img160 {
+        width: 140px;
+        height: 140px;
+    }
+
+    .dialog button {
+        font-size: 18px;
+        padding: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .dialog {
+        padding: 16px;
+    }
+
+    .dialog .img160 {
+        width: 120px;
+        height: 120px;
+    }
+
+    .dialog input {
+        font-size: 14px;
+        padding: 10px;
+    }
+}
+@media (max-width: 768px) {
+    .text0 { font-size: 36px; line-height: 42px; }
+    .text1 { font-size: 24px; line-height: 30px; }
+    .text2 { font-size: 20px; line-height: 26px; }
+    .text3 { font-size: 18px; }
+    .text4 { font-size: 14px; }
+    .text5 { font-size: 12px; }
+}
+* {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+@media (max-width: 768px) {
+    button,
+    .button {
+        width: 100%;
+        padding: 14px;
+        font-size: 18px;
+    }
+}
+
+.dialog input {
+    background-color: var(--gray100) !important;
+    color: white !important;
+}
+
+.dialog input:-webkit-autofill,
+.dialog input:-webkit-autofill:hover,
+.dialog input:-webkit-autofill:focus,
+.dialog input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 1000px var(--gray100) inset !important;
+    box-shadow: 0 0 0 1000px var(--gray100) inset !important;
+    background-color: var(--gray100) !important;
+    -webkit-text-fill-color: white !important;
+    color: white !important;
+}
+
+.dialog .row.acc {
+    justify-content: center;
+}
+
+.dialog .text2 {
+    text-align: center;
+    width: 100%;
+}
+
+
+.dialog input,
+.dialog button {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.dialog {
+    max-width: 480px;
+    margin: 0 auto;
+}
+

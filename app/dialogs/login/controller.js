@@ -17,6 +17,8 @@ app.controller('login', function ($scope, $http, $mdToast, $mdDialog) {
                 $mdToast.simple().textContent("Успешный вход").hideDelay(3000)
             )
             $mdDialog.hide()
+            location.reload()
+
         }).catch(function (error) {
             $mdToast.show(
                 $mdToast.simple().textContent(error.data.message).hideDelay(3000)

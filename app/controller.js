@@ -45,41 +45,60 @@ app.controller('main', function ($scope, $http, $mdToast, $mdDialog) {
 
     $scope.like = function (mem) {
 
-        let fd = new FormData()
-        fd.append("mem_id", mem.mem_id)
-        fd.append("user_hash", $scope.user.user_hash)
+        if (mem.liked) {
+            $mdToast.show(
+                $mdToast.simple()
+                    .textContent('Ты уже лайкала этот мем')
+                    .hideDelay(3000)
+            );
+            return;
+        }
 
-        $http.post("api/like.php", fd, {
-            headers: { 'Content-Type': undefined }
+        $http.post("api/like.php", {
+            mem_id: mem.mem_id,
+            user_hash: $scope.user.user_hash
         }).then(function (response) {
 
-            if (!response.data.success) {
+            if (response.data.message) {
+                $mdToast.show(
+                    $mdToast.simple()
+                        .textContent(response.data.message)
+                        .hideDelay(3000)
+                );
+                return;
+            }
+
+            if (response.data.success === false) {
                 $mdToast.show(
                     $mdToast.simple()
                         .textContent(response.data.error)
                         .hideDelay(3000)
-                )
-                return
+                );
+                return;
             }
 
-            mem.likes_count++
-            $scope.reload()
+            mem.likes_count++;
+            mem.liked = true;
+
+            $scope.toggleLike(mem);
+            toggleLikeButton(mem.mem_id, 'enable');
 
             $mdToast.show(
                 $mdToast.simple()
                     .textContent('Лайк поставлен')
                     .hideDelay(3000)
-            )
+            );
 
-        }, function () {
+            $scope.reload();
+
+        }, function (error) {
             $mdToast.show(
                 $mdToast.simple()
-                    .textContent('Ошибка сервера')
+                    .textContent(error.data?.message || error.data?.error || 'Ошибка сервера')
                     .hideDelay(3000)
-            )
-        })
+            );
+        });
     }
-
 
 
     $scope.getMatches = function (text) {
@@ -144,14 +163,18 @@ app.controller('main', function ($scope, $http, $mdToast, $mdDialog) {
     }
 
     $scope.reload = function () {
-        $http.get("api/mems.php").then(function (response) {
+
+        const hash = localStorage.getItem("user_hash");
+
+        $http.get("api/mems.php?user_hash=" + hash).then(function (response) {
             $scope.mems = response.data
         })
-        $http.get("api/profile.php?user_hash="+ localStorage.getItem("user_hash")).then(function (response) {
 
-            $scope.user = response.data
-
-        })
+        if (hash) {
+            $http.get("api/profile.php?user_hash=" + hash).then(function (response) {
+                $scope.user = response.data
+            })
+        }
     }
 
     $scope.reload()
