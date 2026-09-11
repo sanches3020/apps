@@ -93,14 +93,11 @@ button:hover:not([disabled]),
     width: 160px;
     height: 160px;
 }
+
 md-dialog {
     background: transparent;
 }
-button {
-    background: transparent;
-    border: none;
-    outline: none;
-}
+
 .search-sm .md-input {
     height: 26px !important;
     line-height: 26px !important;
@@ -145,6 +142,12 @@ button {
 .md-autocomplete-suggestions li small {
     color: var(--gray500) !important;
     -webkit-text-fill-color: var(--gray500) !important;
+}
+
+
+
+.dialog{
+    max-width: 100%;
 }
 
 .like-btn {
@@ -318,3 +321,4 @@ button {
     max-width: 480px;
     margin: 0 auto;
 }
+

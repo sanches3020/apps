@@ -136,13 +136,6 @@ button{
     background-color: var(--green);
 }
 
-@media (max-width: 660px) {
-    button:not(.desktop), .button:not(.desktop), .button2:not(.desktop){
-        font-size: 0;
-        gap:0;
-    }
-}
-
 button:active:not([disabled]),
 .button:active:not([disabled]),
 .button2:active:not([disabled]) {
@@ -234,60 +227,4 @@ input[type="checkbox"] {
 input[type="checkbox"]:checked {
     appearance: auto;
     -webkit-appearance: auto;
-}
-
-
-
-button.pay,
-.button.pay,
-button.black,
-.button.black,
-button.green,
-.button.green,
-button.blue,
-.button.blue,
-button.red,
-.button.red {
-    padding: 16px 32px;
-    font-size: 16px;
-    border-radius: 25px;
-    transition: background-position 0.3s ease, transform 0.2s ease;
-}
-
-button.pay,
-.button.pay {
-    background: linear-gradient(90deg, var(--accent) 0%, var(--pay) 50%, var(--pay) 100%) left top / 200% auto;
-}
-
-button.black,
-.button.black {
-    background: linear-gradient(90deg, var(--gray100) 0%, var(--black) 50%, var(--black) 100%) left top / 200% auto;
-}
-
-button.green,
-.button.green {
-    background: linear-gradient(90deg, var(--gray100) 0%, var(--green) 50%, var(--green) 100%) left top / 200% auto;
-}
-
-button.blue,
-.button.blue {
-    background: linear-gradient(90deg, var(--gray100) 0%, var(--accent) 50%, var(--accent) 100%) left top / 200% auto;
-}
-
-button.red,
-.button.red {
-    background: linear-gradient(90deg, var(--gray100) 0%, var(--red) 50%, var(--red) 100%) left top / 200% auto;
-}
-
-button.pay:hover,
-.button.pay:hover,
-button.black:hover,
-.button.black:hover,
-button.green:hover,
-.button.green:hover,
-button.blue:hover,
-.button.blue:hover,
-button.red:hover,
-.button.red:hover {
-    background-position: right center;
 }
