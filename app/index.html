@@ -2,14 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-
     <title>Мем стор</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>RARIBLE</title>
-
-    <link rel="icon" type="image/png" href="/icon/accessibility.svg">
-
     <link rel="stylesheet" href="utils/css/colors-theme.css">
     <link rel="stylesheet" href="utils/css/colors.css">
     <link rel="stylesheet" href="utils/css/shorts.css">
@@ -24,12 +18,9 @@
     <script src="node_modules/angular-aria/angular-aria.min.js"></script>
     <script src="node_modules/angular-messages/angular-messages.min.js"></script>
 
-    <script src="utils/js/animations.js"></script>
-
     <script src="controller.js"></script>
     <script src="dialogs/login/controller.js"></script>
     <script src="dialogs/mint/controller.js"></script>
-
 </head>
 
 <body class="col back-black text-white relative" ng-app="app" ng-controller="main">
@@ -40,13 +31,12 @@
     <div class="row asc gap16 mob-hide">
         <span class="text-white bold uppercase">RARIBLE</span>
         <span class="text-white-60 cursor">Explore</span>
-        <span class="text-gray cursor" ng-click="showMint($event)">Mint</span>
+        <span class="text-gray" ng-click="showMint($event)">Mint</span>
         <span class="text-yellow10 cursor">Gacha</span>
     </div>
 
-    <div class="flex row acc">
+    <div class="flex row acc mob-hide">
         <div class="row acc w300">
-
             <md-autocomplete
                     class="flex text-white search-sm"
                     style="max-width: 100%; width: 300px;"
@@ -73,25 +63,19 @@
                 <md-not-found>
                     <div class="text-gray p8">No matches found.</div>
                 </md-not-found>
-
             </md-autocomplete>
         </div>
     </div>
 
     <div class="row aec">
-          <span ng-if="user" class="text-white bold mr16 row aic gap8">
-        <img src="icon/coin.svg" class="img20">
-        {{ user.user_balance }}
-    </span>
-        <button ng-if="!user"
-                class="back-yellow text-black ph16 pv8 r16"
-                ng-click="showLogin()">
+        <span ng-if="user" class="text-white bold mr16 row aic gap8">
+            <img src="icon/coin.svg" class="img20">
+            {{ user.user_balance }}
+        </span>
+        <button ng-if="!user" class="back-yellow text-black ph16 pv8 r16" ng-click="showLogin()">
             Login
         </button>
-
-        <button ng-if="user"
-                class="back-yellow text-black ph16 pv8 r16"
-                ng-click="logout()">
+        <button ng-if="user" class="back-yellow text-black ph16 pv8 r16" ng-click="logout()">
             Logout
         </button>
     </div>
@@ -99,59 +83,50 @@
 
 <main class="col ph32 pv10 gap32 back-black scroll" style="flex: 1; padding-top: 64px;">
     <div class="row asc gap16 text2">
-        <span class="text-white ">Live & Upcoming</span>
+        <span class="text-white">Live & Upcoming</span>
         <span class="text-gray cursor">Past</span>
     </div>
 
-
     <div class="row asc wrap gap24 mt16">
-
-        <div class="col r8 cursor border-gray p8"
+        <div class="col r8 cursor border-gray p8 mob-fill-width"
              style="max-width:180px"
              ng-repeat="mem in (searchText ? getMatches(searchText) : mems)">
-        <div class="col r8 cursor border-gray p8 mem-card" ng-repeat="mem in (searchText ? getMatches(searchText) : mems)">
-
             <div class="relative">
                 <img ng-src="{{ mem.mem_image }}" class="img160 r8">
-                <img
-                        id="like-btn-{{mem.mem_id}}"
-                        ng-src="{{ mem.liked ? 'icon/like-filled.svg' : 'icon/like.svg' }}"
-                        class="img20 absolute top right like-btn disable"
-                        ng-click="like(mem)"
-                        alt="Лайк">
+                <div class="row aec mt8">
+
+                    <img ng-src="{{ mem.is_liked ? 'icon/like-filled.svg' : 'icon/like.svg' }}"
+                         class="img20"
+                         ng-click="like(mem)"
+                         alt="Лайк">
+                </div>
             </div>
 
             <div class="col p8 gap4">
                 <div class="text-yellow bold">{{mem.mem_title}}</div>
                 <div class="row asc gap8">
-                    <div class="text-white bold uppercase nowrap-disabled">{{ mem.user_name }}</div>
+
+                    <div class="bold uppercase nowrap-disabled">{{ mem.user_name }}</div>
                     <img src="icon/verified.svg" class="img16">
                 </div>
             </div>
 
             <div class="row asc gap8">
-                <div class="text-white bold text2">${{mem.mem_price}}</div>
+
+                <div class="bold text2">${{mem.mem_price}}</div>
                 <img src="icon/info.svg" class="img16">
             </div>
 
-            <button ng-if="mem.user_id != user.user_id"
-                    ng-click="buy(mem)"
-                    class="back-yellow text-black ph16 pv8 r16">
+            <button ng-if="mem.user_id != user.user_id" class="back-yellow text-black ph16 pv8 r16" ng-click="buy(mem)">
                 Купить
             </button>
-            <button ng-if="mem.user_id == user.user_id"
-                    ng-click="percent(mem)"
-                    class="back-yellow text-black ph16 pv8 r16">
+            <button ng-if="mem.user_id == user.user_id" class="back-yellow text-black ph16 pv8 r16" ng-click="percent(mem)">
                 Поднять +10%
             </button>
         </div>
     </div>
-
     <div class="h100 w100" style="min-height: 100px"></div>
 </main>
-</main>
-
-<div class="h100 w100"></div>
 
 <div class="fixed bottom fill-width mob-hide">
     <footer class="flex row asc wrap gap16 p16 mb16 mh32 border-gray text-gray r8 back-black">
@@ -180,9 +155,10 @@
         </div>
     </footer>
 </div>
-<div class="row acc back-yellow fixed right bottom p16 r100 ripple mob-show m32"
-     ng-click="showMint()">
+
+<div class="row acc back-yellow fixed right bottom p16 r100 ripple mob-show m32" ng-click="showMint()">
     <img class="img32" src="icon/plus.svg">
 </div>
+
 </body>
 </html>

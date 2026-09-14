@@ -132,6 +132,8 @@ app.controller('main', function ($scope, $http, $mdToast, $mdDialog) {
                     .hideDelay(3000)
             )
 
+            $scope.reload();
+
         }, function (error) {
             $mdToast.show(
                 $mdToast.simple()

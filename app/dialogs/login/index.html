@@ -1,7 +1,7 @@
 <form class="dialog col gap16 back-gray100 r16 p32 text-white" ng-submit="enter()">
     <div class="row asc mb16">
         <div class="flex bold text2">Вход</div>
-        <img class="img30 img-white ripple r16" src="icon/close.svg" ng-click="close()">
+        <img class="img30 img-white ripple r16" src="/icon" ng-click="close()">
     </div>
 
     <input type="email" ng-model="user_email" placeholder="Емейл" required>
@@ -12,42 +12,3 @@
         Войти
     </button>
 </form>
-<div class="dialog col ace gap8 back-gray100 r16 p32 relative">
-    <img class="img20 cursor absolute top right m16" src="icon/close.svg" ng-click="close()">
-
-    <div class="row acc justify-center">
-        <span class="text-white bold text2">Log in to Rarible</span>
-    </div>
-
-    <div class="col gap12 mt16">
-        <input type="text"
-               ng-model="user_email"
-               placeholder="your@email.com"
-               ng-pattern="/^[^\s@]+@[^\s@]+\.[^\s@]+$/"
-               class="fill-width back-gray100 border-gray r4 p8 text-white">
-
-        <div class="text-gray"
-             ng-show="user_email && !user_email.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)">
-            Неверный email
-        </div>
-
-        <input type="password"
-               ng-model="user_hash"
-               placeholder="password"
-               class="fill-width back-gray100 border-gray r4 p8 text-white">
-
-        <div class="text-gray"
-             ng-show="user_hash === ''">
-            Пароль обязателен
-        </div>
-
-        <button class="fill-width back-gray100 border-gray r4 p8 text-white mt8"
-                ng-click="enter()">
-            Войти
-        </button>
-
-        <small class="text-center text-gray mt8">
-            Protected by ⚙️ <span class="text-white">privacy</span>
-        </small>
-    </div>
-</div>
