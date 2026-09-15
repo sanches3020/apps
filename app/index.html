@@ -92,7 +92,7 @@
              style="max-width:180px"
              ng-repeat="mem in (searchText ? getMatches(searchText) : mems)">
             <div class="relative">
-                <img ng-src="{{ mem.mem_image }}" class="img160 r8">
+                <img ng-src="{{ mem.mem_image }}" class="r8 fill-width" style="height: auto">
                 <div class="row aec mt8">
 
                     <img ng-src="{{ mem.is_liked ? 'icon/like-filled.svg' : 'icon/like.svg' }}"

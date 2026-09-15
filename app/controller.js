@@ -6,6 +6,17 @@ app.controller('main', function ($scope, $http, $mdToast, $mdDialog) {
         user_hash: localStorage.getItem("user_hash")
     }
 
+    function event(object_type, object_id, object_action) {
+        $http.post("api/event.php", {
+            user_hash: localStorage.getItem("user_hash"),
+            object_type: object_type,
+            object_id: object_id,
+            object_action: object_action,
+        })
+    }
+
+    event("page", "main", "open")
+
     $scope.submit2 = function () {
         $mdToast.show(
             $mdToast.simple()
@@ -24,6 +35,7 @@ app.controller('main', function ($scope, $http, $mdToast, $mdDialog) {
     }
 
     $scope.showLogin = function () {
+        event("page", "login", "open")
         showDialog('login', 'dialogs/login')
     }
 
@@ -41,9 +53,9 @@ app.controller('main', function ($scope, $http, $mdToast, $mdDialog) {
         showDialog('mint', 'dialogs/mint')
     }
 
-    $scope.mem_id = 1
 
     $scope.like = function (mem) {
+        event("mem", mem.mem_id, "like")
 
         if (mem.liked) {
             $mdToast.show(
@@ -119,6 +131,7 @@ app.controller('main', function ($scope, $http, $mdToast, $mdDialog) {
     }
 
     $scope.buy = function (mem) {
+        event("mem", mem.mem_id, "buy")
 
         let fd = new FormData()
         fd.append("mem_id", mem.mem_id)
@@ -144,6 +157,8 @@ app.controller('main', function ($scope, $http, $mdToast, $mdDialog) {
     }
 
     $scope.percent = function (mem) {
+
+        event("mem", mem.mem_id, "percent")
 
 
         $http.post("api/percent.php", {mem_id:mem.mem_id, user_hash:localStorage.getItem("user_hash")}).then(function (response) {
