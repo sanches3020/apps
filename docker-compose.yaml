@@ -30,6 +30,25 @@ services:
     depends_on:
       - mysql
 
+  bot_like:
+    container_name: bot_like
+    image: webdevops/php-apache:7.4
+    restart: always
+    command: php /app/api/bot_like.php
+    volumes:
+      - ./app:/app
+    environment:
+      - DB_HOST=${DB_HOST}
+      - DB_NAME=${DB_NAME}
+      - DB_USER=${DB_USER}
+      - DB_PASS=${DB_PASS}
+      - APPLICATION_USER=www-data
+      - APPLICATION_GROUP=www-data
+    networks:
+      - network
+    depends_on:
+      - mysql
+
   admin:
     container_name: admin
     image: phpmyadmin/phpmyadmin
