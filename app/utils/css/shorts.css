@@ -790,41 +790,6 @@ body, html {
     .mob-wrap {
         flex-wrap: wrap !important;
     }
-
-    .mob-fill-width .relative {
-        height: auto !important;
-        overflow: hidden !important;
-        border-radius: 8px !important;
-    }
-
-    .mob-fill-width img.img160 {
-        width: 100% !important;
-        height: auto !important;
-        object-fit: contain !important;
-    }
-
-    header {
-        display: flex !important;
-        flex-direction: row !important;
-        justify-content: space-between !important;
-        align-items: center !important;
-        gap: 12px !important;
-        padding-left: 16px !important;
-        padding-right: 16px !important;
-    }
-
-    header .row.aec {
-        width: auto !important;
-        display: flex !important;
-        flex-direction: row !important;
-        align-items: center !important;
-    }
-
-    header .row.aec button {
-        padding: 6px 12px !important;
-        font-size: 14px !important;
-        white-space: nowrap !important;
-    }
 }
 
 .w80 {
