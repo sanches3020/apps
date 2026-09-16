@@ -88,10 +88,7 @@
     </div>
 
     <div class="row asc wrap gap24 mt16">
-        <div class="col r8 cursor border-gray p8 mob-fill-width"
-             style="max-width:180px"
-             ng-repeat="mem in (searchText ? getMatches(searchText) : mems)">
-
+        <div class="col r8 cursor border-gray p8 mob-fill-width" style="max-width:180px" ng-repeat="mem in (searchText ? getMatches(searchText) : mems)">
             <div class="relative" style="padding-top: 100%;">
                 <img ng-src="{{ mem.mem_image }}" class="absolute top left r8 fill-width" style="height:100%;">
             </div>
@@ -101,9 +98,7 @@
                 <div class="row aec gap8 p8">
                     <div class="text-yellow bold flex">{{ mem.mem_title }}</div>
 
-                    <img ng-src="{{ mem.is_liked ? 'icon/like-filled.svg' : 'icon/like.svg' }}"
-                         class="img20 cursor"
-                         ng-click="like(mem)"
+                    <img ng-src="{{ mem.is_liked ? 'icon/like-filled.svg' : 'icon/like.svg' }}" class="img20 cursor" ng-click="like(mem)"
                          alt="Лайк">
                 </div>
 
@@ -125,10 +120,10 @@
                     Поднять +10%
                 </button>
             </div>
-
     </div>
 
     <div class="h100 w100" style="min-height: 100px"></div>
+    </div>
 </main>
 
 <div class="fixed bottom fill-width mob-hide">
