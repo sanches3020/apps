@@ -38,7 +38,7 @@
     <div class="flex row acc mob-hide">
         <div class="row acc w300">
             <md-autocomplete
-                    class="flex text-white search-sm"
+                    class="flex text-white"
                     style="max-width: 100%; width: 300px;"
                     md-selected-item="selectedItem"
                     md-search-text="searchText"
@@ -51,7 +51,7 @@
                     placeholder="Поиск">
 
                 <md-item-template>
-                    <div class="row aic gap8 p8">
+                    <div class="row gap8 p8">
                         <img class="img32 r4" ng-src="{{item.mem_image}}">
                         <div class="col">
                             <span class="text-white" md-highlight-text="searchText">{{ item.mem_title }}</span>
@@ -81,7 +81,7 @@
     </div>
 </header>
 
-<main class="col ph32 pv10 gap32 back-black scroll" style="flex: 1; padding-top: 64px;">
+<main class="col ph32 pv10 gap32 back-black scroll flex-95" style="padding-top: 64px;">
     <div class="row asc gap16 text2">
         <span class="text-white">Live & Upcoming</span>
         <span class="text-gray cursor">Past</span>
@@ -91,40 +91,43 @@
         <div class="col r8 cursor border-gray p8 mob-fill-width"
              style="max-width:180px"
              ng-repeat="mem in (searchText ? getMatches(searchText) : mems)">
-            <div class="relative">
-                <img ng-src="{{ mem.mem_image }}" class="r8 fill-width" style="height: auto">
-                <div class="row aec mt8">
 
-                    <img ng-src="{{ mem.is_liked ? 'icon/like-filled.svg' : 'icon/like.svg' }}"
-                         class="img20"
-                         ng-click="like(mem)"
-                         alt="Лайк">
-                </div>
+            <div class="relative" style="padding-top: 100%;">
+                <img ng-src="{{ mem.mem_image }}" class="absolute top left r8 fill-width" style="height:100%;">
             </div>
 
             <div class="col p8 gap4">
-                <div class="text-yellow bold">{{mem.mem_title}}</div>
-                <div class="row asc gap8">
 
+                <div class="row aec gap8 p8">
+                    <div class="text-yellow bold flex">{{ mem.mem_title }}</div>
+
+                    <img ng-src="{{ mem.is_liked ? 'icon/like-filled.svg' : 'icon/like.svg' }}"
+                         class="img20 cursor"
+                         ng-click="like(mem)"
+                         alt="Лайк">
+                </div>
+
+                <div class="row asc gap8">
                     <div class="bold uppercase nowrap-disabled">{{ mem.user_name }}</div>
                     <img src="icon/verified.svg" class="img16">
                 </div>
+
+                <div class="row asc gap8">
+                    <div class="bold text2">${{mem.mem_price}}</div>
+                    <img src="icon/info.svg" class="img16">
+                </div>
+
+                <button ng-if="mem.user_id != user.user_id" class="back-yellow text-black ph16 pv8 r16" ng-click="buy(mem)">
+                    Купить
+                </button>
+
+                <button ng-if="mem.user_id == user.user_id" class="back-yellow text-black ph16 pv8 r16" ng-click="percent(mem)">
+                    Поднять +10%
+                </button>
             </div>
 
-            <div class="row asc gap8">
-
-                <div class="bold text2">${{mem.mem_price}}</div>
-                <img src="icon/info.svg" class="img16">
-            </div>
-
-            <button ng-if="mem.user_id != user.user_id" class="back-yellow text-black ph16 pv8 r16" ng-click="buy(mem)">
-                Купить
-            </button>
-            <button ng-if="mem.user_id == user.user_id" class="back-yellow text-black ph16 pv8 r16" ng-click="percent(mem)">
-                Поднять +10%
-            </button>
-        </div>
     </div>
+
     <div class="h100 w100" style="min-height: 100px"></div>
 </main>
 

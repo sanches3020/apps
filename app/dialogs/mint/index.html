@@ -4,13 +4,10 @@
         <img class="img30 img-white ripple r16" src="icon/close.svg" ng-click="close()">
     </div>
 
-
     <div class="col gap8 aic">
         <label for="fileInput" class="file-label text-white back-gray200 r8 p8 ph16 cursor text-ac fill-width">
             Выбрать файл
         </label>
-        <input id="fileInput" type="file" class="hidden"
-               onchange="angular.element(this).scope().upload(this.files[0])">
 
         <img ng-if="mem_image" ng-src="{{ mem_image }}" class="img100 r8 mt8">
     </div>

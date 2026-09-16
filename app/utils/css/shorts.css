@@ -920,8 +920,3 @@ body, html {
     height: 1000px;
 }
 
-
-
-.noshrink {
-    flex-shrink: 0;
-}

@@ -33,11 +33,12 @@ querySilent("CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 ");
 
-/*CREATE TABLE `events` (
+querySilent("CREATE TABLE `events` (
 `event_id` int(11) NOT NULL,
   `user_id` int(11) DEFAULT NULL,
   `object_type` varchar(64) NOT NULL,
   `object_id` varchar(64) NOT NULL,
   `object_action` varchar(64) NOT NULL,
   `event_timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;*/
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+");

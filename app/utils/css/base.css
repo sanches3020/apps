@@ -14,7 +14,6 @@ p {
     margin: 0;
 }
 
-
 .text0 {
     font-size: 50px;
     line-height: 55px;
@@ -77,8 +76,6 @@ p {
     }
 }
 
-
-
 ::-webkit-scrollbar {
     width: 8px;
     height: 12px;
@@ -109,7 +106,6 @@ p {
 ::-webkit-scrollbar-corner {
     display: none;
 }
-
 
 button, .button, .button2 {
     color: var(--white);
@@ -172,7 +168,7 @@ md-select,
 md-autocomplete{
     color: var(--white);
     outline: 2px solid var(--gray300);
-    background: var(--gray100);
+    background: var(--black);
     border-radius: 4px;
     border: none;
     line-height: 40px;
