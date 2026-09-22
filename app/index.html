@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="utils/css/animation.css">
     <link rel="stylesheet" href="node_modules/angular-material/angular-material.min.css">
     <link rel="stylesheet" href="utils/css/style.css">
+    <link rel="stylesheet" href="utils/css/material.css">
 
     <script src="node_modules/angular/angular.min.js"></script>
     <script src="node_modules/angular-material/angular-material.min.js"></script>
@@ -19,6 +20,7 @@
     <script src="node_modules/angular-messages/angular-messages.min.js"></script>
 
     <script src="controller.js"></script>
+    <script src="utils/js/material.js"></script>
     <script src="dialogs/login/controller.js"></script>
     <script src="dialogs/mint/controller.js"></script>
 </head>
@@ -26,7 +28,7 @@
 <body class="col back-black text-white relative" ng-app="app" ng-controller="main">
 
 <header class="row asc gap32 ph32 h64 fixed top back-black p8 fill-width text4">
-    <img class="img32" src="img/logo.svg">
+    <img class="img32" src="img/logo.svg" ng-click="submit2()">
 
     <div class="row asc gap16 mob-hide">
         <span class="text-white bold uppercase">RARIBLE</span>

@@ -1,13 +1,13 @@
 var app = angular.module('app', ['ngMaterial', 'ngAnimate', 'ngAria', 'ngMessages'])
 
-app.controller('main', function ($scope, $http, $mdToast, $mdDialog) {
+app.controller('main', function ($scope, $http, $mdToast, $mdDialog, api, dialog) {
 
     $scope.user = {
         user_hash: localStorage.getItem("user_hash")
     }
 
     function event(object_type, object_id, object_action) {
-        $http.post("api/event.php", {
+        api.post("api/event.php", {
             user_hash: localStorage.getItem("user_hash"),
             object_type: object_type,
             object_id: object_id,
@@ -18,39 +18,23 @@ app.controller('main', function ($scope, $http, $mdToast, $mdDialog) {
     event("page", "main", "open")
 
     $scope.submit2 = function () {
-        $mdToast.show(
-            $mdToast.simple()
-                .textContent('Simple Toast!').hideDelay(3000)
-        )
-    }
-
-    function showDialog(controller_name, index_path, params) {
-        $mdDialog.show({
-            controller: controller_name,
-            templateUrl: index_path + '/index.html',
-            locals: {
-                params: params || {}
-            }
-        })
+        api.error('Simple Toast!')
     }
 
     $scope.showLogin = function () {
         event("page", "login", "open")
-        showDialog('login', 'dialogs/login')
+        dialog('login', 'dialogs/login')
     }
 
     $scope.logout = function () {
         localStorage.removeItem("user_hash")
         $scope.user = null
-
-        $mdToast.show(
-            $mdToast.simple().textContent("Успешный выход").hideDelay(3000)
-        )
+        api.success("Успешный выход")
     }
 
 
     $scope.showMint = function () {
-        showDialog('mint', 'dialogs/mint')
+        dialog('mint', 'dialogs/mint')
     }
 
 

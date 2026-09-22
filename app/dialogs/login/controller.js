@@ -1,4 +1,4 @@
-app.controller('login', function ($scope, $http, $mdToast, $mdDialog) {
+app.controller('login', function ($scope, api, toast, $mdDialog, dialog) {
 
     $scope.user_email = ''
     $scope.user_hash = ''
@@ -7,22 +7,22 @@ app.controller('login', function ($scope, $http, $mdToast, $mdDialog) {
         $mdDialog.hide()
     }
 
+    $mdDialog.hide($scope.user_email)
+
+    dialog("wefwe", "wef")
+
     $scope.enter = async function () {
-        $http.post("api/login.php", {
+        api.post("api/login.php", {
             user_email: $scope.user_email,
             user_hash: $scope.user_hash,
         }).then(function () {
             localStorage.setItem("user_hash", $scope.user_hash)
-            $mdToast.show(
-                $mdToast.simple().textContent("Успешный вход").hideDelay(3000)
-            )
+            toast.success("Успешный вход")
             $mdDialog.hide()
             location.reload()
 
         }).catch(function (error) {
-            $mdToast.show(
-                $mdToast.simple().textContent(error.data.message).hideDelay(3000)
-            )
+            toast.error(error.data.message)
         })
     }
 })
