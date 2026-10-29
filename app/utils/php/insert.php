@@ -1,6 +1,6 @@
 <?php
 
-require_once $_SERVER['DOCUMENT_ROOT'] . '/mems/utils/php/db.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/utils/php/db.php';
 
 $mem_id = get('mem_id');
 
